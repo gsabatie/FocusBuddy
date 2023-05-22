@@ -15,7 +15,7 @@ jobs:
           architecture: x64
           
       - name: Analyze project source
-        run: flutter analyze
+        run: flutter analyze --disable-telemetry
   
   unit-test:
     runs-on: ${{ matrix.os }}
@@ -25,16 +25,23 @@ jobs:
     needs: analyse
 
 
-    steps:
-      - uses: actions/checkout@v3
+    steps: 
+      - name: Clone Flutter repository with master channel
+        uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa
+        with:
+          channel: master
       
-      - uses: subosito/flutter-action@v2
+      
+      - name: Clone Flutter repository with version 3.10.x
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.10.x"
           architecture: x64 
+      - run: flutter doctor -v --disable-telemetry
 
-      - name: Install dependencies
-        run: flutter pub get
+      - name: Get packages
+        uses: actions/checkout@v3
+      - run: flutter pub get
 
       - name: Run tests
         run: flutter test
