@@ -4,7 +4,7 @@ name: Dart
 on: [push, pull_request]
 
 jobs:
-  analyseAndLint:
+  analyse:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -14,17 +14,15 @@ jobs:
           flutter-version: "3.10.x"
           architecture: x64
           
-      - name: Lint project source
-        run: flutter lint
-      
       - name: Analyze project source
         run: flutter analyze
   
-  test:
+  unit-test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+    needs: analyse
 
 
     steps:
