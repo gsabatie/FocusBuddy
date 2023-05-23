@@ -20,7 +20,7 @@ class _TimeCircularSliderState extends State<TimeCircularSlider> {
             startAngle: -90,
             angleRange: 360,
             customColors: CustomSliderColors(
-              trackColor: Colors.white,
+              trackColor: Colors.white.withAlpha(50),
               progressBarColor: Colors.white,
               dotColor: Colors.white,
             ),
@@ -29,6 +29,7 @@ class _TimeCircularSliderState extends State<TimeCircularSlider> {
               progressBarWidth: 10,
               handlerSize: 20,
             )),
+        innerWidget: (percentage) => Container(),
         onChange: (double value) {
           // callback providing a value while its being changed (with a pan gesture)
         },

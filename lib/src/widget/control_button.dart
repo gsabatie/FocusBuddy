@@ -10,11 +10,12 @@ class ControlButton extends StatelessWidget {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(5),
           backgroundColor: Colors.white, // <-- Button color
           foregroundColor: Colors.black, // <-- Splash color
         ),
-        onPressed: null,
-        child: Text(text, style: const TextStyle(fontSize: 17)));
+        onPressed: () {},
+        child: Text(text,
+            style: const TextStyle(fontSize: 17, color: Colors.blueAccent)));
   }
 }

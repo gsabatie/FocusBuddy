@@ -29,10 +29,15 @@ class _FocusTimerPageState extends State<FocusTimerPage> {
             const FocusCommands(),
             const SizedBox(height: 16),
             IconButton.outlined(
+              color: Colors.white,
+              splashColor: Colors.white,
               iconSize: 48,
               isSelected: false,
               icon: const Icon(Icons.play_arrow),
               onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(width: 3.0, color: Colors.white),
+              ),
             ),
           ],
         ),

@@ -11,19 +11,20 @@ class FocusCommands extends StatefulWidget {
 class _FocusCommandsState extends State<FocusCommands> {
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return const Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        ControlButton(text: '-'),
-        Column(
+        Text(style: TextStyle(fontSize: 14, color: Colors.white), '11:35'),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('25:00'),
-            Text(
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                'Genial'),
+            ControlButton(text: '-'),
+            SizedBox(width: 16),
+            Text(style: TextStyle(fontSize: 56, color: Colors.white), '30:00'),
+            SizedBox(width: 16),
+            ControlButton(text: '+'),
           ],
         ),
-        ControlButton(text: '+'),
       ],
     );
   }
