@@ -1,5 +1,4 @@
-name: Dart
-
+name: Test
 
 on: [push, pull_request]
 
@@ -21,10 +20,11 @@ jobs:
           architecture: x64 
       - run: flutter doctor -v --disable-telemetry
       
-      - name: Get packages
+      - name: Get pub packages
         run: flutter pub get
         
       - run: flutter analyze
+      
       - name: Ensure the Dart code is formatted correctly
         run: dart format --set-exit-if-changed .
       
