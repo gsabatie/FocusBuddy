@@ -39,9 +39,6 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
       platformGoldensConfig: PlatformGoldensConfig(
         enabled: !isRunningInCi,
       ),
-      ciGoldensConfig: CiGoldensConfig(
-        enabled: isRunningInCi,
-      ),
     ),
     run: testMain,
   );

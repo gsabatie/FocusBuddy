@@ -1,44 +1,19 @@
 name: Test
 
-on: [push, pull_request]
+on: [pull_request]
 
-jobs:  
-  golden-test:
-    name: Golden tests on macos-latest
+jobs:
+  tests:
+    name: Tests
     runs-on: macos-latest
-
+   
     steps: 
       - uses: actions/checkout@v3 
       
-      - name: Clone Flutter repository with version 3.10.3
+      - name: Clone Flutter repository with version 3.10.x
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.10.3"
-          architecture: x64
-          cache: true
-      - run: flutter doctor -v --disable-telemetry
-      
-      - name: Get pub packages
-        run: flutter pub get
-        
-      - name: Run golden tests
-        run: flutter test --tags=golden
-
-  unit-test:
-    needs: golden-test
-    name: Unit tests ubuntu-latest
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-
-    steps: 
-      - uses: actions/checkout@v3 
-      
-      - name: Clone Flutter repository with version 3.10.3
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: "3.10.3"
+          flutter-version: "3.10.x"
           architecture: x64
           cache: true
       - run: flutter doctor -v --disable-telemetry
@@ -51,5 +26,8 @@ jobs:
       - name: Ensure the Dart code is formatted correctly
         run: dart format --set-exit-if-changed .
       
-      - name: Run tests
-        run: flutter test --exclude-tags golden
+      - name: Run unit-tests
+        run: flutter test --exclude-tags golden 
+
+      - name: Run golden tests
+        run: flutter test --tags=golden --dart-define=CI=true
