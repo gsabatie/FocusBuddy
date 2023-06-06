@@ -1,0 +1,35 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Generate CI Golden 
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:  
+  golden-test:
+    name: Golden tests on macos-latest
+    runs-on: ubuntu-latest
+
+    steps: 
+      - uses: actions/checkout@v3 
+      
+      - name: Clone Flutter repository with version 3.10.3
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.10.3"
+          architecture: x64
+          cache: true
+      - run: flutter doctor -v --disable-telemetry
+      
+      - name: Get pub packages
+        run: flutter pub get
+        
+      - name: Run golden tests
+        run: flutter test --tags=golden --dart-define=CI=true --update-goldens
