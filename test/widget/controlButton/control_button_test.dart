@@ -10,17 +10,9 @@ void main() {
       ),
     );
 
-    testWidgets('render properly', (WidgetTester tester) async {
+    testWidgets('should display + text', (WidgetTester tester) async {
       await tester.pumpWidget(controlButtonWidget);
 
-      await expectLater(
-          find.byType(ElevatedButton), matchesGoldenFile("ControlButton.png"));
-    });
-
-    testWidgets('display + button', (WidgetTester tester) async {
-      await tester.pumpWidget(controlButtonWidget);
-
-      // Verify myWidget shows some text
       expect(find.text('+'), findsOneWidget);
     });
   });

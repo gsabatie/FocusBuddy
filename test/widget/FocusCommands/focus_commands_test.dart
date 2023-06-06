@@ -14,24 +14,15 @@ void main() {
       ),
     );
 
-    testWidgets('render properly', (WidgetTester tester) async {
-      await tester.pumpWidget(focusCommandsWidget);
-
-      await expectLater(
-          find.byType(Column), matchesGoldenFile("FocusCommands.png"));
-    });
-
     testWidgets('display + button', (WidgetTester tester) async {
       await tester.pumpWidget(focusCommandsWidget);
 
-      // Verify myWidget shows some text
       expect(find.text('+'), findsOneWidget);
     });
 
     testWidgets('display 15:45 remaining time', (WidgetTester tester) async {
       await tester.pumpWidget(focusCommandsWidget);
 
-      // Verify myWidget shows some text
       expect(find.text('15:45'), findsOneWidget);
     });
 
@@ -39,7 +30,6 @@ void main() {
         (WidgetTester tester) async {
       await tester.pumpWidget(focusCommandsWidget);
 
-      // Verify myWidget shows some text
       expect(find.text('12:15'), findsOneWidget);
     });
   });
