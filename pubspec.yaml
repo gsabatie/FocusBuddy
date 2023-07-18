@@ -15,14 +15,15 @@ dependencies:
   flutter_bloc: ^8.1.2
   flutter_localizations:
     sdk: flutter
+  quiver: ^3.2.1
   sleek_circular_slider: ^2.0.1
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  alchemist: ^0.6.1
 
   flutter_lints: ^2.0.0
-  alchemist: ^0.6.1
+  flutter_test:
+    sdk: flutter
   golden_toolkit: ^0.15.0
 
 flutter:
